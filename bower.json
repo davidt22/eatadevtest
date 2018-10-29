@@ -1,0 +1,13 @@
+{
+  "name": "eata_bower",
+  "version": "0.0.0",
+  "authors": [
+    "David Teruel <davidterueljorge@gmail.com>"
+  ],
+  "description": "Librerias para el test eata",
+  "main": "index.html",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "~3.3.7"
+  }
+}

@@ -1,0 +1,37 @@
+HOW TO BUILD AND RUN COMPOSE:
+------------------------------
+
+1- Build the composition of linked containers
+$ docker-compose build
+
+2- Run all containers
+$ docker-compose up
+
+1st time:
+----------
+-Initialize database
+$ docker exec mrjeff-webserver-compose php bin/console doctrine:schema:create
+
+-Install assets
+$ docker exec mrjeff-webserver-compose php bin/console assets:install web
+
+-Dump assets(Compress and minify)
+$ docker exec mrjeff-webserver-compose php bin/console assetic:dump
+
+**************
+* To read hosts file in webserver container. Put the DB IP into parameters.yml file
+$ docker exec mrjeff-webserver-compose cat /etc/hosts
+
+* To open phpMyAdmin for manage MySQL databases(Browser)
+192.168.99.100:8181
+User: root
+Password: password
+
+* Execute Symfony commands
+$ docker exec mrjeff-webserver-compose php bin/console doctrine:schema:create
+$ docker exec mrjeff-webserver-compose php bin/console assets:install web
+$ docker exec mrjeff-webserver-compose php bin/console assetic:dump
+
+* Execute MySQL database backup
+$ docker exec mrjeff-db-compose mysqldump -uroot -p mrjeff_ecommerce > mrjeff_ecommerce.sql
+$ Enter password: password
