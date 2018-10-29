@@ -52,5 +52,3 @@ RUN a2enmod rewrite
 RUN a2dissite 000-default
 ADD ./config/project.conf /etc/apache2/sites-available/
 RUN a2ensite project
-
-COPY ./config/crontab /etc/
