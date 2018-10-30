@@ -18,7 +18,7 @@
                     <td>{{ event.id }}</td>
                     <td>{{ event.name }}</td>
                     <td>{{ event.date | date('d-m-Y H:i:s') }}</td>
-                    <td><a href="#">Seleccionar</a></td>
+                    <td><a href="{{ url('event_show', { 'id': event.id }) }}">Ver más</a></td>
                 </tr>
             {% endfor %}
         </tbody>

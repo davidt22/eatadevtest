@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalle Evento{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-2">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>{{ event.id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>{{ event.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha</td>
+                        <td>{{ event.date | date('d-m-Y H:i:s') }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
