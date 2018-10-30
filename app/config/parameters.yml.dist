@@ -17,3 +17,5 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+    api_key: 'uEmk89FbcZXXQ3QOL2XEiA=='
+    api_base_url: 'http://devtest.entradasatualcance.com/api/v1'
