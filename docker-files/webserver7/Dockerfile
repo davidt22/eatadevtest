@@ -19,10 +19,7 @@ RUN apt-get install -y zlib1g-dev \
    && pecl install apcu-5.1.5 \
    && docker-php-ext-enable apcu
 
-RUN pecl install xdebug
-RUN docker-php-ext-enable xdebug
-
-RUN apt-get install -y libicu-dev # Previene error ICU en libreria intl
+RUN apt-get install -y libicu-dev #Previene error ICU en libreria intl
 #RUN pecl install intl
 RUN docker-php-ext-install intl
 
@@ -52,5 +49,3 @@ RUN a2enmod rewrite
 RUN a2dissite 000-default
 ADD ./config/project.conf /etc/apache2/sites-available/
 RUN a2ensite project
-
-COPY ./config/crontab /etc/
