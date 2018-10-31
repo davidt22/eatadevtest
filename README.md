@@ -1,4 +1,4 @@
 eatadevtest
 ===========
 
-A Symfony project created on October 29, 2018, 5:17 pm.
+A demo for consume an API of events, tickets and others using Symfony 3.4
