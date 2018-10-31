@@ -22,6 +22,10 @@
                 </tbody>
             </table>
         </div>
-        <a class="btn btn-primary btn-lg" href="{{ url('tickets_event_list', { 'id': event.id }) }}">Ver tickets</a>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-6 text-center">
+            <a class="btn btn-primary btn-lg" href="{{ url('tickets_event_list', { 'id': event.id }) }}">Ver tickets</a>
+        </div>
     </div>
 {% endblock %}
