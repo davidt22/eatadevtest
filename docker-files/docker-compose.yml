@@ -5,36 +5,7 @@ services:
         volumes:
             - ../:/var/www
             - ./webserver7/config/php.ini:/usr/local/etc/php/php.ini
-        links:
-            - mysql
         ports:
             - 80:80
         working_dir: /var/www
         container_name: webserver-eata-local
-
-    mysql:
-        image: mysql
-        ports:
-            - 3306:3306
-        volumes:
-            - mysql_data:/var/db
-        environment:
-            MYSQL_ROOT_PASSWORD: password
-            MYSQL_DATABASE: eatadevtest
-            MYSQL_USER: user
-            MYSQL_PASSWORD: pass
-        container_name: database-eata-local
-
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        links:
-            - mysql
-        ports:
-            - 8181:80
-        environment:
-          PMA_HOST: mysql
-        container_name: phpmyadmin-eata-local
-
-volumes:
-  mysql_data:
-
