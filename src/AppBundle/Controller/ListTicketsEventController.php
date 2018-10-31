@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Route("/event")
  */
-class ListEventsController extends Controller
+class ListTicketsEventController extends Controller
 {
     /** @var RequestManagerAPIInterface $requestManager */
     private $requestManager;
@@ -20,7 +20,7 @@ class ListEventsController extends Controller
     private $serializer;
 
     /**
-     * ListEventsController constructor.
+     * ListTicketsEventController constructor.
      *
      * @param RequestManagerAPIInterface $requestManager
      * @param SerializerService $serializerService
@@ -32,18 +32,17 @@ class ListEventsController extends Controller
     }
 
     /**
-     * @Route("/list", name="events_list")
-     * @Route("/", name="events_list_main")
+     * @Route("/{id}/tickets", name="tickets_event_list")
      */
-    public function listAction(Request $request)
+    public function listAction(Request $request, $id)
     {
-        $pathUrl = 'events';
+        $pathUrl = 'events/'.$id.'/tickets';
         $response = $this->requestManager->sendRequest(Request::METHOD_GET, $pathUrl);
-        $events = $this->serializer->deserialize($response, 'ArrayCollection<AppBundle\Model\Event>');
+        $ticketsEvent = $this->serializer->deserialize($response, 'ArrayCollection<AppBundle\Model\Ticket>');
 
         // replace this example code with whatever you need
-        return $this->render('event/list.html.twig', array(
-            'events' => $events
+        return $this->render('event/listTickets.html.twig', array(
+            'tickets' => $ticketsEvent
         ));
     }
 }

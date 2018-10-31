@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Model\Event;
 use AppBundle\Serializer\SerializerService;
 use AppBundle\Service\RequestManagerAPIInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -11,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Route("/event")
  */
-class ListEventsController extends Controller
+class ShowEventController extends Controller
 {
     /** @var RequestManagerAPIInterface $requestManager */
     private $requestManager;
@@ -20,7 +21,7 @@ class ListEventsController extends Controller
     private $serializer;
 
     /**
-     * ListEventsController constructor.
+     * DefaultController constructor.
      *
      * @param RequestManagerAPIInterface $requestManager
      * @param SerializerService $serializerService
@@ -32,18 +33,18 @@ class ListEventsController extends Controller
     }
 
     /**
-     * @Route("/list", name="events_list")
-     * @Route("/", name="events_list_main")
+     * @Route("/show/{id}", name="event_show")
      */
-    public function listAction(Request $request)
+    public function showAction(Request $request, $id)
     {
-        $pathUrl = 'events';
+        $pathUrl = 'events/'.$id;
         $response = $this->requestManager->sendRequest(Request::METHOD_GET, $pathUrl);
-        $events = $this->serializer->deserialize($response, 'ArrayCollection<AppBundle\Model\Event>');
+        $event = $this->serializer->deserialize($response, Event::class);
+
 
         // replace this example code with whatever you need
-        return $this->render('event/list.html.twig', array(
-            'events' => $events
+        return $this->render('event/show.html.twig', array(
+            'event' => $event
         ));
     }
 }
